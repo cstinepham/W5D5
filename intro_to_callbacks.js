@@ -11,28 +11,40 @@ class Clock {
 
 
     this.printTime();
-    setInterval(this._tick(), 1000)
+    setInterval(this._tick.bind(this), 1000);
 
   }
 
    printTime() {
-    console.log(`${hours}:${mins}:${secs}`);
+    console.log(`${this.hours}:${this.mins}:${this.secs}`);
   }
 
    _tick() {
-    setInterval(printTime, 1000);
+     this.incrementSeconds();
+     this.printTime();
   }
 
-  incementSeconds(){
+  incrementSeconds(){
     this.secs += 1
+    if (this.secs === 60) {
+      this.secs = 0;
+      this.incrementMinutes();
+    }
   }
 
   incrementMinutes(){
     this.mins += 1
+    if (this.mins === 60) {
+      this.mins = 0;
+      this.incrementHours();
+    }
   }
 
   incrementHours(){
     this.hours += 1
+    if (this.hours === 24) {
+      this.hours = 0
+    }
   }
 
 }
