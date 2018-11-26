@@ -14,4 +14,15 @@ function askIfGreaterThan(el1, el2, callback) {
   });
 }
 
-askIfGreaterThan(5,4,)
+function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop){
+  if (i < arr.length - 1) {
+    askIfGreaterThan(arr[i], arr[i+1], (isGreaterThan) => {
+      if (isGreaterThan === true) {
+        let smaller = arr[i+1];
+        let larger = arr[i];
+        arr[i] = smaller;
+        arr[i+1] = larger;
+      }
+    });
+  }
+}
